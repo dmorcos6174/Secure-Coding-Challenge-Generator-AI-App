@@ -53,8 +53,8 @@ export function ChallengeGenerator() {
         <h2>Coding Challenge Generator</h2>
 
         <div className='quota-display'>
-            <p>Challenges remaining today: {quota?.quota_remaining || 0}</p>
-            {quota?.quota_remaining === 0 && (
+            <p>Challenges remaining today: {quota?.remaining_quota || 0}</p>
+            {quota?.remaining_quota === 0 && (
                 <p>Next reset time: {getNextResetTime()?.toLocaleString()}</p>
             )}
             <div className='difficulty-selector'>
@@ -74,8 +74,8 @@ export function ChallengeGenerator() {
 
         <button
             onClick={generateChallenge}
-            // disabled={isLoading || (quota && quota.quota_remaining === 0)}
-            disabled={false}
+            disabled={isLoading || (quota && quota.remaining_quota === 0)}
+            // disabled={false}
             className='generate-button'
         >
             {isLoading ? "Generating..." : "Generate Challenge"}
