@@ -9,7 +9,7 @@ clerk_sdk = Clerk(bearer_auth=os.getenv("CLERK_SECRET_KEY"))
 
 def authenticate_and_get_user_details(request):
     try:
-        request_state = clerk.sdk.authenticate_request(
+        request_state = clerk_sdk.authenticate_request(
             request,
             AuthenticateRequestOptions(
                 authorized_parties=["http://localhost:5173"],

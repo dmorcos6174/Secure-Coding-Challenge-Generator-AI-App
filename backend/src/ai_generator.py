@@ -2,6 +2,9 @@ import os
 import json
 from openai import OpenAI
 from typing import Dict, Any
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -26,7 +29,7 @@ def generate_challenge_with_ai(difficulty: str) -> Dict[str, any]:
     """
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Generate a {difficulty} difficulty coding challenge."}
